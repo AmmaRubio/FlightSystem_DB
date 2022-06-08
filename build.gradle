@@ -15,6 +15,10 @@ repositories {
 }
 
 dependencies {
+    runtimeOnly 'com.h2database:h2' //local DB
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc' //MySQL DB
+    runtimeOnly 'org.postgresql:postgresql' // PostgreSQL DB
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA interface
     implementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
