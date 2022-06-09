@@ -1,19 +1,26 @@
 package hello.world.demo.Flight;
 
-import hello.world.demo.passenger.Passenger;
+//import hello.world.demo.passenger.Passenger; TODO: implement passenger
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+@Entity
+@Table
 public class Flight {
-private Long id;
-private String departure;
-private String destination;// TODO: change Class to city
-private LocalDate date;
-private LocalTime departureTime; // TODO: change naming in UML class diagram
-private LocalTime destinationTime;
-private String company;
-private Passenger passenger;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String departure;
+    private String destination;// TODO: change Class to city
+    private LocalDate date;
+    private LocalTime departureTime; // TODO: change naming in UML class diagram
+    private LocalTime destinationTime;
+    private String company;
+//private Passenger passenger; TODO: implement passanger
 //private Survey survey; //TODO: implement survey
 
     public Flight() {
@@ -86,7 +93,7 @@ private Passenger passenger;
     public void setCompany(String company) {
         this.company = company;
     }
-//TODO: implement survey
+    //TODO: implement survey
    /* public Survey getSurvey() {
         return survey;
     }
@@ -95,14 +102,15 @@ private Passenger passenger;
         this.survey = survey;
     }*/
 //
-    public Passenger getPassenger() {
+    //TODO: implement passenger
+   /* public Passenger getPassenger() {
         return passenger;
     }
 
     public Passenger setPassenger(Passenger passenger) {
        return this.passenger = passenger;
-    }
-
+    }*/
+//TODO: implement passenger in ToString()
     @Override
     public String toString() {
         return "Flight{" +
@@ -113,7 +121,7 @@ private Passenger passenger;
                 ", departureTime=" + departureTime +
                 ", destinationTime=" + destinationTime +
                 ", company='" + company + '\'' +
-               // ", survey=" + survey +
+                // ", survey=" + survey +
                 '}';
     }
 }
