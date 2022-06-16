@@ -15,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.29'
     runtimeOnly 'com.h2database:h2' //local DB
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc' //MySQL DB
     runtimeOnly 'org.postgresql:postgresql' // PostgreSQL DB
