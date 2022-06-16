@@ -1,11 +1,10 @@
-package hello.world.demo.passenger;
+package hello.world.demo.Passenger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path="passenger")
@@ -21,5 +20,13 @@ public class PassengerController {
     @GetMapping
     public List<Passenger> getPassengers(){
         return passengerService.getPassengers();
+    }
+    @GetMapping(path = "{id}")
+    public Optional<Passenger> getPassengers(@PathVariable("id")Long id){
+        return passengerService.getPassengers(id);
+    }
+    @PostMapping
+    public void addPassenger(@RequestBody Passenger passenger){
+        this.passengerService.addPassenger(passenger);
     }
 }

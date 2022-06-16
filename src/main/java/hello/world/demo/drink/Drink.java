@@ -1,12 +1,19 @@
 package hello.world.demo.drink;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.UUID;
-
+@Entity
 public class Drink {
-
+@Id
+@GeneratedValue
     private UUID id;
     private String name;
     private float price;
+
+    public Drink() {
+    }
 
     public Drink(UUID id, String name) {
         this.id = id;
@@ -24,5 +31,13 @@ public class Drink {
 
     public float getPrice() {
         return price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

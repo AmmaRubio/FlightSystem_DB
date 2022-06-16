@@ -1,6 +1,5 @@
 package hello.world.demo.Flight;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +7,9 @@ import java.util.Optional;
 
 @Service
 public class FlightService {
-    private final hello.world.demo.Flight.FlightRepository flightRepository;
-    @Autowired
-    public FlightService(hello.world.demo.Flight.FlightRepository flightRepository) {
+    private final FlightRepository flightRepository;
+
+    public FlightService(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
     }
 

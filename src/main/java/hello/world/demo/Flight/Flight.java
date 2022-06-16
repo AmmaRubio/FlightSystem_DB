@@ -2,16 +2,10 @@ package hello.world.demo.Flight;
 
 //import hello.world.demo.passenger.Passenger; TODO: implement passenger
 
-import hello.world.demo.Survey.Survey;
-import hello.world.demo.passenger.Passenger;
-
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.Period;
-import java.util.List;
 
 @Entity
 @Table
