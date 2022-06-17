@@ -1,4 +1,4 @@
-package hello.world.demo.drink;
+package hello.world.demo.Drink;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
