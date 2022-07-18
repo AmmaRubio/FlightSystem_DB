@@ -9,14 +9,14 @@ import java.util.UUID;
 public class Drink {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
     private String name;
     private float price;
 
     public Drink() {
     }
 
-    public Drink(UUID id, String name) {
+    public Drink(Long id, String name) {
         this.id = id;
         this.name = name;
     }
