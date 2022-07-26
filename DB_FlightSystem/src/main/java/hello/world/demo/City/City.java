@@ -1,11 +1,10 @@
 package hello.world.demo.City;
 
+import hello.world.demo.Flight.Flight;
 import hello.world.demo.POI.POI;
+import hello.world.demo.Passenger.Passenger;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,6 +13,10 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id; // system id
     String name;
+    @OneToMany(mappedBy = "departure")
+    private List<Flight> isDeparture;
+    @OneToMany(mappedBy = "destination")
+    private List<Flight> isDestination;
     // TODO: implement map
    // List<POI> poiList; TODO: implement one to many realtionship
 

@@ -2,10 +2,16 @@ package hello.world.demo.Flight;
 
 //import hello.world.demo.passenger.Passenger; TODO: implement passenger
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import hello.world.demo.City.City;
+import hello.world.demo.Passenger.Passenger;
+
 import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,8 +19,12 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String departure;
-    private String destination;// TODO: change Class to city
+    @ManyToOne
+    @JoinColumn(name = "departure_id")
+    private City departure;
+    @ManyToOne
+    @JoinColumn(name = "destination_id")
+    private City destination;// TODO: change Class to city
     private LocalDate date;
     private LocalTime departureTime; // TODO: change naming in UML class diagram
     private LocalTime destinationTime;
@@ -22,14 +32,21 @@ public class Flight {
     @Transient
     private Duration flightDuration;
     //TODO: solve error - how to link "passengers" and "Survey" with flight in database 31-34 - classes itself should be implemented correctly
-
-  // private List<Passenger> passengers; TODO: implement PassengerList, when class is correctly implemented
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "bookedFlights")
+    @JsonIgnore
+    private List<Passenger> passengers = new ArrayList<>();
+    // private List<Passenger> passengers; TODO: implement PassengerList, when class is correctly implemented
  //  private List<Survey> surveyList; TODO: implement Survey class DB first
 
     public Flight() {
     }
 
-    public Flight(Long id, String departure, String destination,
+    public Flight(Long id, City departure, City destination,
                   LocalDate date, LocalTime departureTime,
                   LocalTime destinationTime, String company) {
         this.id = id;
@@ -49,24 +66,32 @@ public class Flight {
         this.id = id;
     }
 
-    public String getDeparture() {
+    public City getDeparture() {
         return departure;
     }
 
-    public void setDeparture(String departure) {
+    public void setDeparture(City departure) {
         this.departure = departure;
     }
 
-    public String getDestination() {
+    public City getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
+    public void setDestination(City destination) {
         this.destination = destination;
     }
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 
     public void setDate(LocalDate date) {
@@ -127,8 +152,8 @@ public class Flight {
     public String toString() {
         return "Flight{" +
                 "id=" + id +
-                ", departure='" + departure + '\'' +
-                ", destination='" + destination + '\'' +
+                ", departure='" + departure.getName() + '\'' +
+                ", destination='" + destination.getName() + '\'' +
                 ", date=" + date +
                 ", departureTime=" + departureTime +
                 ", destinationTime=" + destinationTime +

@@ -5,22 +5,25 @@ import hello.world.demo.Flight.Flight;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.*;
 
 @Entity
 public class Passenger {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
     private String secondName;
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
-
    // private List<String> favAttractions; // TODO: implement attractions
-    //private List<Flight> bookedFlights; //
+    @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {CascadeType.PERSIST,
+    CascadeType.MERGE})
+    @JoinTable(
+            name = "passenger_flight",
+            joinColumns = @JoinColumn(name = "passenger_id"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id"))
+    private List<Flight> bookedFlights = new ArrayList<>();
 
 
     public Passenger() {
@@ -38,6 +41,14 @@ private Long id;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public List<Flight> getBookedFlights() {
+        return bookedFlights;
+    }
+
+    public void setBookedFlights(List<Flight> bookedFlights) {
+        this.bookedFlights = bookedFlights;
     }
 
     public void setFirstName(String firstName) {
