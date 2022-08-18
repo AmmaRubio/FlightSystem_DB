@@ -2,7 +2,6 @@ package hello.world.demo.Passenger;
 
 
 import hello.world.demo.Flight.Flight;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 import javax.persistence.*;
@@ -23,12 +22,11 @@ public class Passenger {
             name = "passenger_flight",
             joinColumns = @JoinColumn(name = "passenger_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
-    private List<Flight> bookedFlights = new ArrayList<>();
+    private List<Flight> flights = new ArrayList<>();
 
 
     public Passenger() {
       //  this.favAttractions = new Vector<String>();
-       // this.bookedFlights = new Vector<Flight>();
         this.firstName = "NA";
         this.secondName = "NA";
     }
@@ -43,12 +41,12 @@ public class Passenger {
         return firstName;
     }
 
-    public List<Flight> getBookedFlights() {
-        return bookedFlights;
+    public List<Flight> flights() {
+        return flights;
     }
 
-    public void setBookedFlights(List<Flight> bookedFlights) {
-        this.bookedFlights = bookedFlights;
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 
     public void setFirstName(String firstName) {
@@ -86,17 +84,22 @@ public class Passenger {
     public void setId(Long id) {
         this.id = id;
     }
-/*public void bookFlight(Flight flight){
-        this.bookedFlights.add(flight);
-}
-public void removeFlight(Flight flight){
-        this.bookedFlights.remove(flight);
-}
-public void addPOI(String POI){
-        this.favAttractions.add(POI);
-}
 
- */
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    /*public void bookFlight(Flight flight){
+            this.bookedFlights.add(flight);
+    }
+    public void removeFlight(Flight flight){
+            this.bookedFlights.remove(flight);
+    }
+    public void addPOI(String POI){
+            this.favAttractions.add(POI);
+    }
+
+     */
     @Override
     public String toString() {
         return "Passenger{" +

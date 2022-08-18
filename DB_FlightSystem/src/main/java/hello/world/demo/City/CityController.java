@@ -27,4 +27,7 @@ public class CityController {
     this.cityService.addCity(city);
     }
 
+    @GetMapping(path = "name/{name}")
+    public City getCityByName(@PathVariable("name")String name){return this.cityService.getCityByName(name);}
+
 }

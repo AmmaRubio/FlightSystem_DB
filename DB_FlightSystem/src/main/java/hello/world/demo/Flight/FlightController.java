@@ -22,4 +22,6 @@ public class FlightController {
     @DeleteMapping(path = "{id}")
     public void deleteFlight(@PathVariable("id") Long id){
         flightService.deleteFlight(id);}
+
+
 }

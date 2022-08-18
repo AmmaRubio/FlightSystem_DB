@@ -1,5 +1,6 @@
 package hello.world.demo.Passenger;
 
+import hello.world.demo.Flight.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,9 @@ public class PassengerController {
     @PostMapping
     public void addPassenger(@RequestBody Passenger passenger){
         this.passengerService.addPassenger(passenger);
+    }
+    @GetMapping("/{id}/flight")
+    public List<Flight> getAllFlightsByPassengerId(@PathVariable(value = "id")Long id){
+        return this.passengerService.getAllFlightsById(id);
     }
 }

@@ -33,4 +33,7 @@ public class FlightService {
     public Optional<Flight> getFlightById(Long id) {
         return flightRepository.findFlightById(id);
     }
+   /* public Optional<Flight> getFlightByPassengerId(Long passengerId){
+        this.flightRepository.findFlightByPassengerId(passengerId);
+    }*/
 }

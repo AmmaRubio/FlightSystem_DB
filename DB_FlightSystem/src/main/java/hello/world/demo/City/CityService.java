@@ -23,4 +23,8 @@ public class CityService {
     public void addCity(City city){
     cityRepository.save(city);
     }
+    public City getCityByName(String name){
+    City result = this.cityRepository.findCityByName(name);
+    return result;
+}
 }

@@ -37,7 +37,7 @@ public class Flight {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             },
-            mappedBy = "bookedFlights")
+            mappedBy = "flights")
     @JsonIgnore
     private List<Passenger> passengers = new ArrayList<>();
     // private List<Passenger> passengers; TODO: implement PassengerList, when class is correctly implemented
