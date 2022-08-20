@@ -34,4 +34,8 @@ public class PassengerController {
     public List<Flight> getAllFlightsByPassengerId(@PathVariable(value = "id")Long id){
         return this.passengerService.getAllFlightsById(id);
     }
+    @PutMapping("/addFlight/{id}")
+    public void addFlightToPassenger(@PathVariable Long id, @RequestBody Flight flight){
+        passengerService.addFlightToPassenger( id,  flight);
+    }
 }

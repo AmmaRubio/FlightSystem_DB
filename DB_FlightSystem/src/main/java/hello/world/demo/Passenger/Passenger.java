@@ -44,6 +44,9 @@ public class Passenger {
     public List<Flight> flights() {
         return flights;
     }
+    public void addFlight(Flight flight){
+        this.flights.add(flight);
+    }
 
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
@@ -89,17 +92,6 @@ public class Passenger {
         return flights;
     }
 
-    /*public void bookFlight(Flight flight){
-            this.bookedFlights.add(flight);
-    }
-    public void removeFlight(Flight flight){
-            this.bookedFlights.remove(flight);
-    }
-    public void addPOI(String POI){
-            this.favAttractions.add(POI);
-    }
-
-     */
     @Override
     public String toString() {
         return "Passenger{" +

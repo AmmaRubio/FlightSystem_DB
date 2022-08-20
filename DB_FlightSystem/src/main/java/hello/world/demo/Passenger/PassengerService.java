@@ -32,4 +32,9 @@ public class PassengerService {
     public List<Flight> getAllFlightsById(Long id) {
     return this.flightRepository.findFlightsByPassengersId(id);
     }
+    public void addFlightToPassenger(Long id, Flight flight){
+        Passenger p = passengerRepository.getById(id);
+        p.addFlight(flight);
+        passengerRepository.save(p);
+    };
 }
